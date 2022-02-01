@@ -70,10 +70,7 @@ public class MMOParties {
 	
 	public void serverInit(FMLServerStartingEvent event)
 	{
-		LiteralArgumentBuilder<CommandSource> root = Commands.literal(MODID)
-				.then(PartyCommand.register());
-		
-		event.getCommandDispatcher().register(root);
+		event.getCommandDispatcher().register(PartyCommand.register());
 	}
 
 	/**

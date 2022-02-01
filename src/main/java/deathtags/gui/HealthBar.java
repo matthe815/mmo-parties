@@ -26,7 +26,6 @@ public class HealthBar {
     	"textures/bar.png");
 
     public static final ResourceLocation HEART_TEXTURE = new ResourceLocation("minecraft", "textures/gui/icons.png");
-	private static final String[] barColors = new String[] {"bf0000", "e66000", "e69900", "e6d300", "99e600", "4ce600", "00e699", "00e6e6", "0099e6", "0000e6", "9900e6", "d580ff", "8c8c8c", "e6e6e6"};
 	
     private Minecraft mc;
     public static float targetHP;
@@ -57,12 +56,11 @@ public class HealthBar {
             int pN = 0;
 
             for (String p_player : MMOParties.localParty.local_players) {
-            	System.out.println(p_player);
-                //if (!p_player.equals(Minecraft.getInstance().player.getName().getFormattedText())) {
+                if (!p_player.equals(Minecraft.getInstance().player.getName().getFormattedText())) {
                     PartyMemberData data = MMOParties.localParty.data.get(p_player);                   
                     RenderOwnPartyMember(data, posX, pN, p_player);
                     pN++;
-                //}
+                }
             }
         }
         
@@ -74,8 +72,6 @@ public class HealthBar {
         if (data == null)
             return;
 
-    	System.out.println("Render player");
-    	
         float currentHealth = data.health;
         float maxHealth = data.maxHealth;
         float currentArmor = data.armor;
